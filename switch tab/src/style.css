@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Poetsen+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root {
+  font-size: 16px;
+  
+  --nav-item-width: 8rem;
+  --nav-item-height: 2rem;
+  --nav-item-padding: 0.5rem;
+
+  --btn-radius: 1rem;
+}
+
+* {
+  outline: 1px dashed red;;
+}
+
+
+body {
+  font-family: "Poetsen One", "Noto Sans TC",sans-serif;
+}
+
+.nav-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: lightgray;
+  padding-block: var(--nav-item-padding);
+ 
+}
+
+
+
+.nav-tab ul {
+  display: flex;
+  align-items: center;
+  border-radius: var(--btn-radius);
+  padding-block: var(--nav-item-padding);
+  background-color: aliceblue;
+  position: relative;
+}
+
+.nav-tab ul::after {
+  content: "";
+  position: absolute;
+  width: var(--nav-item-width);
+  height: var( --nav-item-height);
+  display: block;
+  background-color: paleturquoise;
+  border-radius: var(--btn-radius);
+
+  /* 終於成功！因為ul沒有flex */
+  top: 0;
+  bottom: 0;
+  left: var(--nav-item-padding);
+  margin-block: auto; /* 垂直置中 */
+
+}
+
+
+.nav-tab li {
+  width: var(--nav-item-width);
+  padding-block: var(--nav-item-padding);
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  margin-inline: var(--nav-item-padding);
+}
+
+
+#nav-home:checked ~ .nav-tab ul::after {
+  transform: translateX(0);
+}
+
+#nav-products:checked ~ .nav-tab ul::after {
+  transform: translateX(calc(var(--nav-item-width) + var(--nav-item-padding) * 2));
+}
+
+#nav-about:checked ~ .nav-tab ul::after {
+  transform: translateX(calc((var(--nav-item-width) + var(--nav-item-padding) * 2) * 2));
+}
+
+#nav-contact:checked ~ .nav-tab ul::after {
+  transform: translateX(calc((var(--nav-item-width) + var(--nav-item-padding) * 2) * 3));
+}
+
+
+/* .nav-tab li::after {
+  content: "";
+  position: absolute;
+  background-color: blanchedalmond;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--btn-radius);
+  top: 0;
+  left: 0;
+  z-index: -1;
+} */
+
+
+/* .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: aquamarine;
+  border-radius: var(--btn-radius);
+  padding-block: var(--nav-item-padding);
+  position: relative;
+}
+
+
+.nav ul {
+  border: 1px dashed red;
+
+  display: flex;
+  align-items: center;
+ 
+}
+
+.nav ul li {
+  text-align: center;
+  width: var(--nav-item-width);
+} */
