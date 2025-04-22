@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Winky+Rough:wght@300..900&display=swap');
+
+body {
+    font-family: "winky-rough","Noto Sans TC",sans-serif;
+    letter-spacing: 0.05rem;
+}
+
+/* * {
+    outline: 1px solid yellow;
+} */
+
+:root {
+    font-size: 16px;
+    /* 20px */
+    --h2-font-size: 1.25rem;
+    --f1-font-size: 1rem;
+    --nav-padding: 1.25rem;
+    --bright-color: aliceblue;
+    --dark-color: #4F4F48;
+}
+
+
+.logo-link {
+    display: flex;
+  align-items: center; 
+    height: 100%;
+}
+
+/* height會一層一層找依據 */
+.logo-link img {
+ /* 圖片隨高度自動維持寬高 */
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+header {
+    background-color:  #465D4C;
+}
+
+.nav-bar {
+    font-size: var(--h2-font-size);
+    color: var(--bright-color);
+    font-weight: 500;
+
+    height: 60px;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-inline: var(--nav-padding);
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.menu-group {
+    display: none;
+}
+
+.toggle-menu-btn {
+    color: white;
+}
+
+.toggle-menu-btn + input{
+    display: none;
+}
+  
+  /* 注意他們是同輩鄰居 */
+.toggle-menu:checked + .menu-group {
+    display: block;
+}
+
+.menu-group {
+    background-color: #B4A582;
+    position: absolute;
+    top: 60px;
+    left: 0; 
+    right: 0; 
+}
+
+.menu {
+    padding: var(--nav-padding);
+   
+
+}
+
+.menu a {
+    padding-inline: var(--nav-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+  }
+
+.menu a::before  {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #465D4C;
+
+    position: absolute;
+
+    right: 0; 
+    top: 50%;  
+    transform: translateY(-50%); 
+    transition: transform 0.3s ease; /* 加上轉場動畫 */
+    z-index: 88888;
+}
+
+.submenu-group {
+   /* background-color: #D7C4BB; */
+   background-color: #FAD689;
+   font-size: var(--f1-font-size);
+   color: var(--dark-color);
+
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+
+    margin-block: 4px;
+
+    padding: var(--nav-padding);
+    display: none;
+   
+}
+
+.menu:hover .submenu-group {
+    display: block;
+
+}
+
+.menu:hover a::before {
+    transform:  translateY(-50%) rotate(180deg); 
+
+}
+
+.submenu-group li {
+    padding-block: 8px;
+    border-bottom: 1px solid aliceblue;
+}
+
+@media (min-width: 768px) {
+    .menu-group{
+        position: relative;
+        top: 0;
+        gap: 12px;
+        
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .menu {
+        height: 100%;
+        position: relative;  
+        
+    }
+
+    .menu a {
+        height: 100%;
+       
+    }
+
+    .toggle-menu-btn {
+        display: none;
+    }
+
+    .submenu-group {
+        height: auto;
+        margin-block: 0;
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        
+    }
+}
